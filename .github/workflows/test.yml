@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push:
+   
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      DIST_DIR: myna-$VERSION-linux-amd64
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo apt-get install libpcsclite-dev
+      - run: ./ci/myna-build-linux-amd64.sh
